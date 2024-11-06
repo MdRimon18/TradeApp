@@ -1,4 +1,4 @@
-﻿namespace Pms.Models.Entity.Inventory
+﻿namespace Domain.Entity.Inventory
 {
     public class ProductImage
     {

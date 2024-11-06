@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entity.Settings
+namespace Domain.Entity.Accounts
 {
     public class AccHead
     {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Pms.Models.Entity.Accounts
+namespace Domain.Entity.Accounts
 {
     public class AccountsDailyExpanse
     {

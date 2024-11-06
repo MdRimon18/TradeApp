@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Pms.Models.Entity.Inventory
+namespace Domain.Entity.Inventory
 {
     public class BusinessType
     {
