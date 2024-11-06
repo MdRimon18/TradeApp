@@ -1,0 +1,354 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Eyanna || Calender</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/assets/v2/img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="~/assets/v2/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/v2/extra-libs/prism/prism.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+    <!-- Custom CSS -->
+    <link href="~/assets/v2/css/fonts.css" rel="stylesheet">
+    <link href="~/assets/v2/dist/css/style.min.css" rel="stylesheet">
+    <link href="~/assets/v2/css/custom.css" rel="stylesheet">
+    <link href="~/assets/v2/css/responsive.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <!-- -------------------------------------------------------------- -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- -------------------------------------------------------------- -->
+        <div class="preloader">
+            <img src="~/assets/v2/img/favicon.png" alt="loading-icon" class="img-fluid tea lds-ripple">
+            <!-- <svg class="tea lds-ripple" width="37" height="48" viewbox="0 0 37 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M27.0819 17H3.02508C1.91076 17 1.01376 17.9059 1.0485 19.0197C1.15761 22.5177 1.49703 29.7374 2.5 34C4.07125 40.6778 7.18553 44.8868 8.44856 46.3845C8.79051 46.79 9.29799 47 9.82843 47H20.0218C20.639 47 21.2193 46.7159 21.5659 46.2052C22.6765 44.5687 25.2312 40.4282 27.5 34C28.9757 29.8188 29.084 22.4043 29.0441 18.9156C29.0319 17.8436 28.1539 17 27.0819 17Z" stroke="#2962FF" stroke-width="2"></path>
+              <path d="M29 23.5C29 23.5 34.5 20.5 35.5 25.4999C36.0986 28.4926 34.2033 31.5383 32 32.8713C29.4555 34.4108 28 34 28 34" stroke="#2962FF" stroke-width="2"></path>
+              <path id="teabag" fill="#2962FF" fill-rule="evenodd" clip-rule="evenodd" d="M16 25V17H14V25H12C10.3431 25 9 26.3431 9 28V34C9 35.6569 10.3431 37 12 37H18C19.6569 37 21 35.6569 21 34V28C21 26.3431 19.6569 25 18 25H16ZM11 28C11 27.4477 11.4477 27 12 27H18C18.5523 27 19 27.4477 19 28V34C19 34.5523 18.5523 35 18 35H12C11.4477 35 11 34.5523 11 34V28Z"></path>
+              <path id="steamL" d="M17 1C17 1 17 4.5 14 6.5C11 8.5 11 12 11 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#2962FF"></path>
+              <path id="steamR" d="M21 6C21 6 21 8.22727 19 9.5C17 10.7727 17 13 17 13" stroke="#2962FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg> -->
+        </div>
+        <!-- -------------------------------------------------------------- -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- -------------------------------------------------------------- -->
+        <!-- -------------------------------------------------------------- -->
+        <!-- Login box.scss -->
+        <!-- -------------------------------------------------------------- -->
+        <section class="section calender-section" id="calender-section">
+            <div class="container h-100">
+                <div class="calender-box">
+                    <div class="user-calender-box">
+                        <div class="row g-5">
+                            <div class="col-xl-7 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="calender-left-box">
+                                    <div class="calender-user-img">
+                                        <img src="~/assets/v2/img/user-1.png" alt="user-1" class="img-fluid">
+                                    </div>
+                                    <div class="calender-body">
+                                        <h4>Alisa Thomas</h4>
+                                        <p>Schedule an appointment with Alisa</p>
+                                        <div class="calender-date-box">
+                                            <div id="datepicker"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="calender-right-box">
+                                    <div class="right-tab-box">
+                                        <h5>How long do you need?</h5>
+                                        <div class="inner-tab-box mb-0">
+                                            <ul class="nav nav-pills justify-content-start flex-nowrap" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-bs-toggle="tab" href="#tab1" role="tab">
+                                                        15 Min
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#tab2" role="tab">
+                                                        30 Min
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#tab3" role="tab">
+                                                        01 Hr.
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="tab-content sedule-tab-content">
+                                        <div class="form-group">
+                                            <label class="form-label">What time works best?</label>
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected>India Standard Time (6:32pm)</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="tab-pane active" id="tab1" role="tabpanel">
+                                            <div class="inner-schdule-content">
+                                                <div class="sedule-box">
+                                                    <button type="button" class="btn sedule-btn">01:00 pm</button>
+                                                    <button type="button" class="btn sedule-btn active">01:15 pm</button>
+                                                    <button type="button" class="btn sedule-btn">01:30 pm</button>
+                                                    <button type="button" class="btn sedule-btn">01:45 pm</button>
+                                                    <button type="button" class="btn sedule-btn">02:00 pm</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="powerd-by-box">
+                                            <img src="~/assets/v2/img/power-logo.png" alt="powerd-by-logo" class="img-fluid">
+                                        </div> -->
+                                        <div class="tab-pane fade" id="tab2" role="tabpanel">
+                                            <div class="inner-schdule-content">
+                                                <div class="sedule-box">
+                                                    <button type="button" class="btn sedule-btn">01:00 pm</button>
+                                                    <button type="button" class="btn sedule-btn active">01:30 pm</button>
+                                                    <button type="button" class="btn sedule-btn">02:00 pm</button>
+                                                    <button type="button" class="btn sedule-btn">02:30 pm</button>
+                                                    <button type="button" class="btn sedule-btn">03:00 pm</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab3" role="tabpanel">
+                                            <div class="inner-schdule-content">
+                                                <div class="sedule-box">
+                                                    <button type="button" class="btn sedule-btn">01:00 pm</button>
+                                                    <button type="button" class="btn sedule-btn active">02:00 pm</button>
+                                                    <button type="button" class="btn sedule-btn">03:00 pm</button>
+                                                    <button type="button" class="btn sedule-btn">04:00 pm</button>
+                                                    <button type="button" class="btn sedule-btn">05:00 pm</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sedule-action-btn">
+                                            <a href="#" class="btn cancle-btn">Cancel</a>
+                                            <a href="#" class="btn add-btn" id="next-box">Next</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="powerd-by-box">
+                            <img src="~/assets/v2/img/power-logo.png" alt="powerd-by-logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="schedule-box">
+                        <div class="section-title">
+                            <h4>Schedule an appointment </h4>
+                            <a href="#" class="back-btn" id="back_btn"><span><i class="bi bi-chevron-left"></i></span>Back</a>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 border-right">
+                                <div class="schedule-card">
+                                    <div class="schedule-card-img">
+                                        <img src="~/assets/v2/img/user-img/sc-img.png" alt="sc-img" class="img-fluid">
+                                    </div>
+                                    <div class="schedule-card-body">
+                                        <div class="schedule-card-title">
+                                            <h4>Alisa Thomas</h4>
+                                            <span>Schedule an appointment with Alisa </span>
+                                        </div>
+                                        <div class="schedule-card-content">
+                                            <h5>appointment Date and time</h5>
+                                            <ul class="schedule-list">
+                                                <li>
+                                                    <span class="icon-img">
+                                                        <img src="~/assets/v2/img/icon/clock-img.png" alt="clock-img" class="img-fluid light-icon">
+                                                        <img src="~/assets/v2/img/icon/clock-img_dark.png" alt="clock-img" class="img-fluid dark-icon">
+                                                    </span>
+                                                    <p>15 Mins</p>
+                                                </li>
+                                                <li>
+                                                    <span class="icon-img">
+                                                        <img src="~/assets/v2/img/icon/calendar_month.png" alt="calendar_month" class="img-fluid light-icon">
+                                                        <img src="~/assets/v2/img/icon/calendar_month1.png" alt="calendar_month" class="img-fluid dark-icon">
+                                                    </span>
+                                                    <p>01:45 pm, Thu, Sept 20, 2024</p>
+                                                </li>
+                                                <li>
+                                                    <span class="icon-img">
+                                                        <img src="~/assets/v2/img/icon/world-img.png" alt="world-img" class="img-fluid light-icon">
+                                                        <img src="~/assets/v2/img/icon/world-img1.png" alt="world-img" class="img-fluid dark-icon">
+                                                    </span>
+                                                    <p>India Standard Time <span>(UTC+05:30)</span></p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="schedule-right-box">
+                                    <div class="schedule-box-title">
+                                        <h4>Enter Details</h4>
+                                    </div>
+                                    <div class="schedule-form-box">
+                                        <form class="qus-form schedule-form" action="" method="get">
+                                            <div class="form-group">
+                                                <label class="form-label">Name</label>
+                                                <input type="text" class="form-control" placeholder="Enter Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Email Address </label>
+                                                <input type="email" class="form-control" placeholder="youremail@gmail.com">
+                                            </div>
+                                            <div class="form-group">
+                                                <p>By proceeding, you confirm that you have read and agree to Eyaana's <a href="#">Terms of Use</a> and <a href="#">Privacy Notice</a>.</p>
+                                            </div>
+                                            <div class="form-group sedule-action-btn">
+                                                <a href="#" class="btn cancle-btn">Cancel</a>
+                                                <a href="#" class="btn add-btn" id="schedule_btn">Schedule</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="powerd-by-box">
+                            <img src="~/assets/v2/img/power-logo.png" alt="powerd-by-logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="thank-you-box" style="background-image: url(~/assets/v2/img/thankyou-bg.png);">
+                        <div class="thank-you-content">
+                            <div class="thank-you-card">
+                                <img src="~/assets/v2/img/icon/check-mark.png" alt="check-mark" class="img-fluid thank-you-img">
+                                <div class="thank-you-card-body">
+                                    <h2>Thank You</h2>
+                                    <p>for booking an appointment with us We'll be in touch to confirm closer to the date</p>
+                                </div>
+                            </div>
+                            <div class="thank-you-schdule-box">
+                                <h5>appointment Details</h5>
+                                <div class="row align-items-center">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-12 col">
+                                        <div class="appointment-list">
+                                            <div class="appointment-box-content">
+                                                <span class="icon-img">
+                                                    <img src="~/assets/v2/img/icon/clock-img.png" alt="clock-img" class="img-fluid light-icon">
+                                                    <img src="~/assets/v2/img/icon/clock-img_dark.png" alt="clock-img" class="img-fluid dark-icon">
+                                                </span>
+                                                <p>15 Mins</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-12 col">
+                                        <div class="appointment-list">
+                                            <div class="appointment-box-content">
+                                                <span class="icon-img">
+                                                    <img src="~/assets/v2/img/icon/calendar_month.png" alt="calendar_month" class="img-fluid light-icon">
+                                                    <img src="~/assets/v2/img/icon/calendar_month1.png" alt="calendar_month" class="img-fluid dark-icon">
+                                                </span>
+                                                <p>01:45 pm, Thu, Sept 20, 2024</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-12 col p-0">
+                                        <div class="appointment-list">
+                                            <div class="appointment-box-content">
+                                                <span class="icon-img">
+                                                    <img src="~/assets/v2/img/icon/world-img.png" alt="world-img" class="img-fluid light-icon">
+                                                    <img src="~/assets/v2/img/icon/world-img1.png" alt="world-img" class="img-fluid dark-icon">
+                                                </span>
+                                                <p>India Standard Time <span>(UTC+05:30)</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <ul class="schedule-list">
+                                    <li>
+
+                                    </li>
+                                    <li>
+
+                                    </li>
+                                    <li>
+
+                                    </li>
+                                </ul> -->
+                            </div>
+                        </div>
+                        <div class="powerd-by-box">
+                            <img src="~/assets/v2/img/power-logo.png" alt="powerd-by-logo" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- -------------------------------------------------------------- -->
+        <!-- Login box.scss -->
+        <!-- -------------------------------------------------------------- -->
+    </div>
+    <!-- -------------------------------------------------------------- -->
+    <!-- All Required js -->
+    <!-- -------------------------------------------------------------- -->
+    <script src="~/assets/v2/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="~/assets/v2/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+    <!--Custom JavaScript -->
+    <!-- -------------------------------------------------------------- -->
+    <!-- This page plugin js -->
+    <!-- -------------------------------------------------------------- -->
+    <script>
+        $(".preloader").fadeOut();
+        // ==============================================================
+        // Login and Recover Password
+        // ==============================================================
+        // $('#to-recover').on("click", function() {
+        //     $("#loginform").slideUp();
+        //     $("#recoverform").fadeIn();
+        // });
+    </script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#back_btn').click(function () {
+                // $('.notification-box').toggle('slideRight');
+                $('.schedule-box').removeClass("show");
+                $('.user-calender-box').removeClass("hide");
+            });
+
+            $('#next-box').click(function () {
+                // $('.notification-box').toggle('slideLeft');
+                $(".schedule-box").addClass("show");
+                $(".user-calender-box").addClass("hide");
+            });
+            $('#schedule_btn').click(function () {
+                // $('.notification-box').toggle('slideLeft');
+                $(".thank-you-box").addClass("show");
+                $('.schedule-box').removeClass("show");
+                $(".user-calender-box").addClass("hide");
+            });
+        });
+    </script>
+</body>
+
+</html>
