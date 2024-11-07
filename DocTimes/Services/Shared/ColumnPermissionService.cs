@@ -1,10 +1,10 @@
 ﻿using Dapper;
-
-using Pms.Helper;
+using Domain.Entity.Settings;
 using System.Data;
-using Pms.Models.Entity.Settings;
+
 using System.Linq.Expressions;
-using Pms.Domain.DbContex;
+using TradeApp.DbContex;
+
 
 namespace Pms.Data.Repository.Shared
 {

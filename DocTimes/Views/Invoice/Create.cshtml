@@ -1,7 +1,4 @@
-﻿@page "/create_invoice"
-@using Pms.Models.Entity
-
-
+﻿@model Domain.ViewModel.InvoiceViewModel
 <style>
     .hidden {
         display: none;
@@ -46,8 +43,8 @@
                                            type="search"
                                            placeholder="Search by Name/SKU/Code"
                                            aria-label="search"
-                                    @bind="srchQuery"
-                                    @oninput="OnProductSearchInOffCanva" />
+                                           Asp-for="SrchQuery"
+                                    oninput="OnProductSearchInOffCanva" />
 
                                     <button type="button" class="btn btn-sm btn-outline-secondary border-300 hover-border-secondary">
                                         <span class="fa fa-search fs-10"></span>
@@ -60,7 +57,7 @@
                     <div class="row g-0">
 
 
-                        @foreach (var item in FilteredItemsOffCanva)
+                        @foreach (var item in  Model.FilteredItemsOffCanva)
                         {
                             <div class="col-md-4 ps-md-2">
                                 <div class="card mb-3 zoom-card">
@@ -84,7 +81,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end mt-3">
-                                            <button class="btn btn-sm btn-falcon-primary" type="button" @onclick="() => OnSelectProduct(item)">
+                                            <button class="btn btn-sm btn-falcon-primary" type="button" onclick="() => OnSelectProduct(item)">
                                                 Add
                                             </button>
                                         </div>
@@ -142,7 +139,8 @@
         <button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <Pms.Pages.Settings.ProductSerialNumbersCmnt />
+
+       <p>Set Page Serial</p>
     </div>
     @* <div class="card-footer">
     <div class="row">
@@ -182,22 +180,22 @@
         <div class="tab-content">
             <div class="row g-3">
                 <div class="col-lg-10 col-md-10 col-sm-10 col-10">
-                    <EditForm Model="@invoice" OnValidSubmit="SaveOrUpdate">
-                        <DataAnnotationsValidator />
+                    <form   OnValidSubmit="SaveOrUpdate">
+                       
 
                         <div class="row g-3">
                             <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                                 <div class="form-group">
                                     <label for="InvoiceType" class="form-label fw-semi-bold">Invoice Type</label><span class="error-star">*</span>
-                                    <InputSelect @bind-Value="invoice.InvoiceTypeId" class="form-select form-rounded form-select-sm ">
+                                    <Select Asp-for="Invoice.InvoiceTypeId" class="form-select form-rounded form-select-sm ">
                                         <option value="">Select Invoice Type</option>
-                                        @foreach (var item in invoiceType_list)
+                                        @foreach (var item in Model.InvoiceTypeList)
                                         {
                                             <option value="@item.InvoiceTypeId">@item.InvoiceTypeName</option>
                                         }
-                                    </InputSelect>
-
-                                    <ValidationMessage class="text-danger" For="@(() => invoice.InvoiceTypeId)" />
+                                    </Select>
+                                    <span asp-validation-for="Invoice.InvoiceTypeId" class="text-danger"></span>
+                                   
                                 </div>
                             </div>
 
@@ -225,8 +223,9 @@
 
                                     </div>
 
+                                    <span asp-validation-for="Invoice.InvoiceNumber" class="text-danger"></span>
 
-                                    <ValidationMessage class="text-danger" For="@(() => invoice.InvoiceNumber)" />
+                                    
                                     @* <input type="text" id="inputField" class="form-control" placeholder="Enter value" aria-label="Enter value" > *@
 
 
@@ -238,7 +237,7 @@
                                 <div class="form-group">
                                     <label for="name" class="form-label fw-semi-bold">Customer Email</label>
                                     <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold"
-                                    @bind-value="CustomerEmail"
+                                    Asp-for="CustomerEmail"
                                            placeholder="Customer Email">
                                 </div>
 
@@ -246,21 +245,22 @@
                             <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                                 <div class="form-group">
                                     <label for="paymentType" class="form-label fw-semi-bold">Notification Send By</label><span class="error-star">*</span>
-                                    <InputSelect @bind-Value="invoice.NotificationById" class="form-select form-rounded form-select-sm ">
+                                    <select Asp-for="Invoice.NotificationById" class="form-select form-rounded form-select-sm ">
                                         <option value="">Select Notification</option>
-                                        @foreach (var item in notificationBy_list)
+                                        @foreach (var item in Model.NotificationByList)
                                         {
                                             <option value="@item.NotificationById">@item.NotificationByName</option>
                                         }
-                                    </InputSelect>
+                                    </select>
                                 </div>
-                                <ValidationMessage class="text-danger" For="@(() => invoice.NotificationById)" />
+                                <span asp-validation-for="Invoice.NotificationById" class="text-danger"></span>
+                                
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                                 <div class="form-group">
                                     <label class="form-label fw-semi-bold">Date</label>
-                                    <InputDate class="form-control form-control-sm form-rounded fw-semi-bold"
-                                               name="entryDate" @bind-Value="invoice.InvoiceDateTime"
+                                    <input type="date" class="form-control form-control-sm form-rounded fw-semi-bold"
+                                               Asp-for="Invoice.InvoiceDateTime"
                                                placeholder="Date" />
                                 </div>
                             </div>
@@ -269,28 +269,29 @@
                             <div class="col-lg-3 col-md-3 col-sm-6 col-9 animated-div">
                                 <div class="form-group">
                                     <label for="salesBy" class="form-label fw-semi-bold">Seller</label>
-                                    <InputText @bind-Value="invoice.SalesByName" readonly name="salesBy" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="seller" required />
+                                    <input Asp-for="Invoice.SalesByName" readonly name="salesBy" type="text" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="seller" required />
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                                 <div class="form-group">
                                     <label for="paymentType" class="form-label fw-semi-bold">Payment Type</label><span class="error-star">*</span>
-                                    <InputSelect @bind-Value="invoice.PaymentTypeId" class="form-select form-rounded form-select-sm ">
+                                    <select Asp-for="Invoice.PaymentTypeId" class="form-select form-rounded form-select-sm ">
                                         <option value="">Select Payment Type</option>
-                                        @foreach (var item in PaymentTypes_list)
+                                        @foreach (var item in Model.PaymentTypesList)
                                         {
                                             <option value="@item.PaymentTypeId">@item.PaymentTypesName</option>
                                         }
-                                    </InputSelect>
+                                    </select>
                                 </div>
-                                <ValidationMessage class="text-danger" For="@(() => invoice.PaymentTypeId)" />
+                                <span asp-validation-for="Invoice.PaymentTypeId" class="text-danger"></span>
+                                 
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-9 col-9 animated-div">
                                 <div class="form-group">
                                     <label for="categorySelect" class="form-label fw-semi-bold">Category</label>
                                     <select class="form-select form-rounded form-select-sm ">
                                         <option value="">Select Category</option>
-                                        @foreach (var item in productCategory_list)
+                                        @foreach (var item in Model.ProductCategoryList)
                                         {
                                             <option value="@item.ProdCtgId">@item.ProdCtgName</option>
                                         }
@@ -303,7 +304,7 @@
                                     <label for="categorySelect" class="form-label fw-semi-bold">Sub Category</label>
                                     <select class="form-select form-rounded form-select-sm ">
                                         <option value=""> Select Sub Category</option>
-                                        @foreach (var item in productSubCategory_list)
+                                        @foreach (var item in Model.ProductSubCategoryList)
                                         {
                                             <option value="@item.ProdSubCtgId">@item.ProdSubCtgName</option>
                                         }
@@ -322,9 +323,9 @@
                                                type="search"
                                                placeholder="Search for Name/Sku/Code..."
                                                aria-label="Search Product Name"
-                                        @bind="SearchQuery"
-                                        @onclick="OnInputClick"
-                                        @oninput="OnSearchInput" />
+                                        Asp-for="SearchQuery"
+                                        onclick="OnInputClick"
+                                        oninput="OnSearchInput" />
 
                                         <!-- Button inside the input -->
                                         <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
@@ -333,7 +334,7 @@
                                         </button>
                                     </div>
 
-                                    <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-50"
+                                   @*  <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-50"
                                          style="display: @(ShowDropdown && FilteredItems.Any() ? "block" : "none");">
                                         <div class="scrollbar list py-3" style="max-height: 24rem; cursor: pointer;">
                                             @if (FilteredItems.Any())
@@ -363,20 +364,15 @@
                                                 <p class="fallback fw-bold fs-8">No Result Found.</p>
                                             }
                                         </div>
-                                    </div>
+                                    </div> *@
                                 </div>
-                                @*  <div class="input-group-append">
-                                <button class="btn btn-sm btn-light" type="button" id="plusButton" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasRight-1" aria-controls="offcanvasRight-1">
-                                +
-                                </button>
-                                </div> *@
+                                
                             </div>
                             <div class="col-sm-3 col-md-3 col-lg-3 col-12 ">
                                 <div class="form-group">
                                     <label for="remarks" class="form-label fw-semi-bold">Notes</label>
-                                    <InputTextArea type="text"
-                                    @bind-Value="invoice.Notes"
+                                    <textarea type="text"
+                                    Asp-for="Invoice.Notes"
                                                    class="form-control form-control-sm form-rounded fw-semi-bold"
                                                    placeholder="Notes"
                                                    cols="60"
@@ -412,7 +408,7 @@
                                         @{
                                             int indexx = 0;
                                         }
-                                        @foreach (var itm in itemsList)
+                                        @foreach (var itm in Model.ItemsList)
                                         {
                                             <tr>
                                                 <td>
@@ -430,23 +426,23 @@
                                                 </td>
                                                 <td>
                                                     <input type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold"
-                                                           placeholder="Quantity" @bind="itm.Quantity" @bind:event="oninput" @onchange="() => OnChangeQuantity(itm)" />
+                                                           placeholder="Quantity" asp-for="@itm.Quantity" bind:event="oninput" onchange="() => OnChangeQuantity(itm)" />
                                                 </td>
                                                 <td>
-                                                    <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" readonly placeholder="Unit" @bind="@itm.Unit">
+                                                    <input type="text" class="form-control form-control-sm form-rounded fw-semi-bold" readonly placeholder="Unit" Asp-for="@itm.Unit">
                                                 </td>
                                                 <td>
-                                                    <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Rate" @bind="@itm.SellingPrice">
+                                                    <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="Rate" Asp-for="@itm.SellingPrice">
                                                 </td>
                                                 <td>
-                                                    <input type="number" readonly class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="V(%)" @bind="@itm.VatPercentg">
+                                                    <input type="number" readonly class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="V(%)" Asp-for="@itm.VatPercentg">
                                                 </td>
                                                 <td>
-                                                    <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="D(%)" @bind="@itm.DiscountPercentg">
+                                                    <input type="number" class="form-control form-control-sm form-rounded fw-semi-bold" placeholder="D(%)" Asp-for="@itm.DiscountPercentg">
                                                 </td>
                                                 <td>
                                                     <input readonly type="number" class="form-control form-control-sm form-rounded bold-input fw-semi-bold"
-                                                           placeholder="Amount" @bind="itm.TotalPrice">
+                                                           placeholder="Amount" Asp-for="@itm.TotalPrice">
                                                 </td>
                                                 <td class="treeview">
                                                     <div class="treeview-list-item" style="margin-top:auto;margin-right:0">
@@ -462,7 +458,7 @@
                                                     </button>
                                                 </td>
                                                 <td>
-                                                    <button title="Delete" class="btn btn-sm btn-light" @onclick="() => DeleteItem(itm)">
+                                                    <button title="Delete" class="btn btn-sm btn-light" onclick="() => DeleteItem(itm)">
                                                         <i class="far fa-trash-alt fa-lg text-danger"></i>
                                                     </button>
                                                 </td>
@@ -488,7 +484,7 @@
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    @foreach (var srl in SelectedSerialNumbers) //.Where(w=>w.ProductId==itm.ProductId)
+                                                                                    @foreach (var srl in Model.SelectedSerialNumbers) //.Where(w=>w.ProductId==itm.ProductId)
                                                                                     {
                                                                                         <tr class="hover-actions-trigger">
                                                                                             <td class="align-middle text-nowrap">
@@ -504,7 +500,7 @@
                                                                                             <td class="w-auto">
                                                                                                 <div class="btn-group btn-group hover-actions end-0 me-4">
                                                                                                     @* <button class="btn btn-tertiary pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button> *@
-                                                                                                    <button @onclick="()=>OnDeleteSerialNumber(srl)" class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
+                                                                                                    <button onclick="()=>OnDeleteSerialNumber(srl)" class="btn btn-tertiary ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt text-danger"></span></button>
                                                                                                 </div>
                                                                                             </td>
 
@@ -562,7 +558,7 @@
                                 <button class="btn btn-outline-secondary me-1 mb-1" type="button">Refresh</button>
                             </div>
                         </div>
-                    </EditForm>
+                    </form>
                     <div class="row mt-4">
                     </div>
 
@@ -570,40 +566,40 @@
                 <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                     <div class="form-group">
                         <label class="form-label fw-bolder">Total Quantity</label>
-                        <InputNumber @bind-Value="invoice.TotalQnty" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Total Quantity" />
+                        <input Asp-for="Invoice.TotalQnty" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Total Quantity" />
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bolder">Total</label>
-                        <InputNumber @bind-Value="invoice.TotalAmount" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Total Amount" />
+                        <input Asp-for="Invoice.TotalAmount" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Total Amount" />
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bold">Vat</label>
-                        <InputNumber @bind-Value="invoice.TotalVat" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Vat(%)" />
+                        <input Asp-for="Invoice.TotalVat" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Vat(%)" />
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bold">Discount</label>
-                        <InputNumber @bind-Value="invoice.TotalDiscount" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Discount(%)" />
+                        <input Asp-for="Invoice.TotalDiscount" type="number" class="form-control form-control-sm form-rounded fw-bold" readonly placeholder="Discount(%)" />
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bold">Additional Discount</label>
-                        <InputNumber @bind-Value="invoice.TotalAddiDiscount" type="number"
+                        <input Asp-for="Invoice.TotalAddiDiscount" type="number"
                                      class="form-control form-control-sm form-rounded fw-bold"
-                                     placeholder="Additional Discount" @oninput="OnChangeAddiDiscount" />
+                                     placeholder="Additional Discount" oninput="OnChangeAddiDiscount" />
                     </div>
 
                     <div class="form-group">
                         <label class="form-label fw-bolder">Total Payable</label>
-                        <InputNumber @bind-Value="invoice.TotalPayable" type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Total Payable" />
+                        <input Asp-for="Invoice.TotalPayable" type="number" class="form-control form-control-sm form-rounded fw-bold" placeholder="Total Payable" />
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bolder">Receive</label>
-                        <InputNumber @bind-Value="invoice.RecieveAmount" type="number" class="form-control form-control-sm form-rounded fw-bold"
-                                     placeholder="Receive" @oninput="OnChangeReceiveAmount" />
+                        <input Asp-for="Invoice.RecieveAmount" type="number" class="form-control form-control-sm form-rounded fw-bold"
+                                     placeholder="Receive" oninput="OnChangeReceiveAmount" />
 
                     </div>
                     <div class="form-group">
                         <label class="form-label fw-bolder">Current Due</label>
-                        <InputNumber @bind-Value="invoice.DueAmount" type="number"
+                        <input Asp-for="Invoice.DueAmount" type="number"
                                      class="form-control form-control-sm form-rounded fw-bold" placeholder="Current Due" />
                     </div>
                 </div>
