@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
-using BlazorAppServerAppTest.Models;
-using Dapper;
 
-using Pms.Domain.DbContex;
+using Dapper;
+using Domain.Entity.Settings;
+using TradeApp.DbContex;
+
+
 
 
 

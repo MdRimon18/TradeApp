@@ -1,9 +1,10 @@
 ﻿using Dapper;
 
 using System.Data;
-using BlazorAppServerAppTest.Models;
+
 using System.Threading.Tasks;
-using Pms.Domain.DbContex;
+using TradeApp.DbContex;
+
 
 namespace Pms.Data.Repository
 {

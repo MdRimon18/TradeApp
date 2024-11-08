@@ -16,7 +16,7 @@ namespace DocTimes.Controllers
         }
         public IActionResult Index()
         {
-             
+
             return View();
 
         }
@@ -38,7 +38,7 @@ namespace DocTimes.Controllers
         //    return PartialView(routingHelper); // Loads the default view if no route is specified
         //}
 
-        
+
         public IActionResult Privacy()
         {
             return View();

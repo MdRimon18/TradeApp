@@ -6,7 +6,7 @@ using System.Data;
 using TradeApp.DbContex;
 using TradeApp.Helper;
 
-namespace Pms.Data.Repository.Inventory
+namespace TradeApp.Services.Inventory
 {
     public class BasicColumnPermissionService
     {

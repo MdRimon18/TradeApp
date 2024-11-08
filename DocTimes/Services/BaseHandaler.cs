@@ -1,9 +1,10 @@
 ﻿using System.Data;
 using Dapper;
-using Pms.Domain.DbContex;
+using TradeApp.DbContex;
 
 
-namespace Pms.Data.Repository
+
+namespace TradeApp.Services 
 {
     public class BaseHandaler
     {

@@ -13,14 +13,14 @@ namespace Domain.ViewModel
         public List<InvoiceItems> ItemsList { get; set; } = new List<InvoiceItems>();
         public List<Products> Products { get; set; } = new List<Products>();
         public List<Products> FilteredItemsOffCanva=new List<Products>();
-        public List<NotificationBy> NotificationByList { get; set; }
-        public List<InvoiceType> InvoiceTypeList { get; set; }
-        public List<ProductCategories> ProductCategoryList { get; set; }
-        public List<ProductSubCategory> ProductSubCategoryList { get; set; }
-        public List<PaymentTypes> PaymentTypesList { get; set; }
-        public List<Customers> CustomersList { get; set; }
-        public List<ProductSerialNumbers> SerialNumbers { get; set; }
-        public List<ProductSerialNumbers> SelectedSerialNumbers { get; set; }
+        public List<NotificationBy> NotificationByList { get; set; } = new List<NotificationBy>();
+        public List<InvoiceType> InvoiceTypeList { get; set; } = new List<InvoiceType>();
+        public List<ProductCategories> ProductCategoryList { get; set; } = new List<ProductCategories>();
+        public List<ProductSubCategory> ProductSubCategoryList { get; set; } = new List<ProductSubCategory>();
+        public List<PaymentTypes> PaymentTypesList { get; set; } = new List<PaymentTypes>();
+        public List<Customers> CustomersList { get; set; } =new List<Customers>();
+        public List<ProductSerialNumbers> SerialNumbers { get; set; } = new List<ProductSerialNumbers>();
+        public List<ProductSerialNumbers> SelectedSerialNumbers { get; set; } = new List<ProductSerialNumbers>();
         public string CustomerEmail { get; set; }
         public string SearchQuery { get; set; }
         public string SrchQuery { get; set; }
