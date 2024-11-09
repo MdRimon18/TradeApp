@@ -9,7 +9,7 @@ namespace Domain.ViewModel
 {
     public class InvoiceViewModel
     {
-        public Invoice Invoice { get; set; }
+        public Invoice Invoice { get; set; }=new Invoice();
         public List<InvoiceItems> ItemsList { get; set; } = new List<InvoiceItems>();
         public List<Products> Products { get; set; } = new List<Products>();
         public List<Products> FilteredItemsOffCanva=new List<Products>();
