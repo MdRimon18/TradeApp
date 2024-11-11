@@ -43,7 +43,7 @@ namespace TradeApp.Controllers.Mvc
             _productSerialNumbersService = productSerialNumbersService;
         }
 
-        public async Task<IActionResult> CreateAsync(bool isPartial = false)
+        public async Task<IActionResult> Create(bool isPartial = false)
         {
             var invoiceItems = new List<InvoiceItems>
 {
@@ -159,6 +159,26 @@ namespace TradeApp.Controllers.Mvc
                 return PartialView("Index", invoiceViewModel);
             }
             return View("Index", invoiceViewModel);
+
+        }
+        public IActionResult ShippingWithPayment(bool isPartial = false)
+        {
+            
+            if (isPartial)
+            {
+                return PartialView("ShippingWithPayment");
+            }
+            return View("ShippingWithPayment");
+
+        }
+        public IActionResult PrintInvoice(bool isPartial = false)
+        {
+
+            if (isPartial)
+            {
+                return PartialView("PrintInvoice");
+            }
+            return View("PrintInvoice");
 
         }
     }

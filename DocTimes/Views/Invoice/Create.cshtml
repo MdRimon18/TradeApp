@@ -68,7 +68,7 @@
                                         <div class="tab-content">
                                             <div class="tab-pane preview-tab-pane active" role="tabpanel">
                                                 <div class="avatar avatar-4xl mb-3">
-                                                    <img class="rounded-soft" src="assets/img/products/1.jpg" alt="Product Image" />
+                                                    <img class="rounded-soft" src="~/assets/img/products/1.jpg" alt="Product Image" />
                                                 </div>
                                                 <!-- Additional Product Information -->
                                                 <div class="product-info">
@@ -331,7 +331,7 @@
                                                 <td>
                                                     <div class="col-auto">
                                                         <div class="avatar avatar-2xl">
-                                                            <img class="rounded-circle" src="assets/img/products/1.jpg" alt="@itm.ProductName" />
+                                                            <img class="rounded-circle" src="~/assets/img/products/1.jpg" alt="@itm.ProductName" />
                                                         </div>
                                                     </div>
                                                 </td>
@@ -438,9 +438,9 @@
 
                         <div class="row align-items-center mt-2">
                             <div class="col-auto d-flex">
-                                <button class="btn btn-outline-primary btn-sm me-1 mb-1" type="submit">Create Invoice</button>
+                                <a class="btn btn-outline-primary btn-sm me-1 mb-1" type="button" data-spa="Invoice/PrintInvoice">Create Invoice</a>
 
-                                <a href="shipping_nd_payment" class="btn btn-outline-primary btn-sm me-1 mb-1" type="button">Shipping</a>
+                                <a href="#" class="btn btn-outline-primary btn-sm me-1 mb-1" type="button" data-spa="Invoice/ShippingWithPayment">Shipping</a>
 
                                 <button class="btn btn-outline-secondary me-1 mb-1" type="button">Refresh</button>
                             </div>
@@ -518,7 +518,7 @@
             <div class="col-md-5 col-xl-12 col-xxl-5 ps-lg-4 ps-xl-2 ps-xxl-5 text-center text-md-start text-xl-center text-xxl-start">
                 <div class="border-bottom border-dashed d-block d-md-none d-xl-block d-xxl-none my-4"></div>
                 <div class="fs-7 fw-bold">All Total: <span class="text-primary">$3320</span></div>
-                <a href="digital_payment" class="btn btn-success mt-3 px-5" type="submit">Confirm &amp; Pay</a>
+                <a href="#" class="btn btn-success mt-3 px-5" type="submit" data-spa="Invoice/PrintInvoice">Confirm &amp; Pay</a>
                 <p class="fs-10 mt-3 mb-0">By clicking <strong>Confirm & Pay </strong> button you agree to the <a href="#!">Terms &amp; Conditions</a></p>
             </div>
         </div>
